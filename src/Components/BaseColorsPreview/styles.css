@@ -1,6 +1,5 @@
 .base-palette-grid {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
 }
 
 .base-palette-grid > .color-preview {

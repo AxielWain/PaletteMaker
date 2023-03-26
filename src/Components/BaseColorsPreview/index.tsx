@@ -7,7 +7,10 @@ type Props = {
 
 export function BaseColorsPreview({ colors }: Props) {
   return (
-    <div className="base-palette-grid">
+    <div
+      className="base-palette-grid"
+      style={{ gridTemplateColumns: `repeat(${colors.length}, 1fr)` }}
+    >
       {colors.map((color) => (
         <ColorPreview key={color} color={color} />
       ))}
