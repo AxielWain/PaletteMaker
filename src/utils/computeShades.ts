@@ -1,6 +1,6 @@
 import { darken, lighten, parseToHsl } from 'polished';
+import { TRANSPARENT_COLOR } from './constants';
 
-const transparentColor = 'rgb(0, 0, 0, 0)';
 const higherLightnessThreshold = 0.8;
 const lowerLightnessThreshold = 0.2;
 
@@ -44,12 +44,12 @@ export function computeShades(
 
   const fillerDarkerShades = maxShades - darkerShades.length;
   for (let i = 0; i < fillerDarkerShades; i++) {
-    darkerShades.push(transparentColor);
+    darkerShades.push(TRANSPARENT_COLOR);
   }
 
   const fillerLighterShades = maxShades - lighterShades.length;
   for (let i = 0; i < fillerLighterShades; i++) {
-    lighterShades.unshift(transparentColor);
+    lighterShades.unshift(TRANSPARENT_COLOR);
   }
 
   return { darkerShades, lighterShades };

@@ -1,5 +1,4 @@
-import { nanoid } from 'nanoid';
-import { useMemo } from 'react';
+import { useKeyIds } from '../../hooks';
 import { ColorPreview } from '../ColorPreview';
 import './styles.css';
 
@@ -9,13 +8,7 @@ type Props = {
 };
 
 export function ShadesGridPreview({ colors, columnCount }: Props) {
-  const keyIds = useMemo(() => {
-    const ids: string[] = [];
-    for (let i = 0; i < colors.length; i++) {
-      ids.push(nanoid(12));
-    }
-    return ids;
-  }, [columnCount]);
+  const keyIds = useKeyIds(colors.length);
   return (
     <div
       className="shades-grid"

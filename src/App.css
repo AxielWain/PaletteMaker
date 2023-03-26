@@ -12,6 +12,13 @@
   gap: 48px;
 }
 
+.palette-grids {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
 .App .palette {
   display: flex;
   flex-direction: column;
