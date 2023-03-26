@@ -1,9 +1,12 @@
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
 import './App.css';
+import { HslColorControl } from './Components/HslColorControl';
 
 function App() {
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+      <HslColorControl initialColor="#00ee55" onColorChange={() => {}} />
+    </div>
+  );
 }
 
 export default App;
