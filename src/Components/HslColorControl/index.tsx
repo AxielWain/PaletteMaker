@@ -2,7 +2,7 @@ import { parseToHsl } from 'polished';
 import hsl from 'polished/lib/color/hsl';
 import { HslColor } from 'polished/lib/types/color';
 import { useState } from 'react';
-import { ColorPreview } from './ColorPreview';
+import { ColorPreview } from '../ColorPreview';
 import { LabeledSlider } from './LabeledSlider';
 import './styles.css';
 

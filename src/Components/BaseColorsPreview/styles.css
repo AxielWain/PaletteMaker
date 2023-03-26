@@ -1,0 +1,10 @@
+.base-palette-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+}
+
+.base-palette-grid > .color-preview {
+  box-sizing: border-box;
+  height: 40px;
+  width: 40px;
+}

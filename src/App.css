@@ -4,3 +4,10 @@
   padding: 2rem;
   text-align: center;
 }
+
+.App {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 48px;
+}
