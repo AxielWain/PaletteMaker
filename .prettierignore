@@ -1,0 +1,5 @@
+.vscode
+.yarn
+client
+coverage
+node_modules
