@@ -2,7 +2,7 @@ import { hsl, parseToHsl } from 'polished';
 import { HslColor } from 'polished/lib/types/color';
 
 export function computeDerivedColors(
-  colors: string[],
+  colors: readonly string[],
   startIndex = 1,
   totalColors = 6
 ) {

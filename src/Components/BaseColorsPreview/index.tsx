@@ -3,7 +3,7 @@ import { ColorPreview } from '../ColorPreview';
 import './styles.css';
 
 type Props = {
-  colors: string[];
+  colors: readonly string[];
 };
 
 export function BaseColorsPreview({ colors }: Props) {

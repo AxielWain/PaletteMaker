@@ -1,0 +1,13 @@
+.json-box {
+  height: 200px;
+  resize: none;
+  width: 300px;
+}
+
+.horizontal-button-group {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: center;
+}

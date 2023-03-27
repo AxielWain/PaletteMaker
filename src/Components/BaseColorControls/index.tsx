@@ -2,7 +2,7 @@ import { HslColorControl } from '../HslColorControl';
 import './styles.css';
 
 type Props = {
-  initialColors: string[];
+  initialColors: readonly string[];
   onColorChange: (index: number, color: string) => void;
 };
 

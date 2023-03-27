@@ -1,7 +1,7 @@
 import { computeShades } from './computeShades';
 
 export function computeShadesGrid(
-  colors: string[],
+  colors: readonly string[],
   numberOfShades: number,
   maxShades = 6
 ) {
