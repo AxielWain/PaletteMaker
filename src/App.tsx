@@ -24,6 +24,7 @@ const copy = (text: string) => {
 function App() {
   const [colorJson, setColorJson] = useState('');
   const [baseColors, setBaseColors] = useState(initialColors);
+  const [loadedColors, setLoadedColors] = useState(initialColors);
   const [darkerShades, setDarkerShades] = useState([...emptyShades]);
   const [lighterShades, setLighterShades] = useState([...emptyShades]);
   const [derivedColors, setDerivedColors] = useState(initialDerivedColors);
@@ -83,6 +84,7 @@ function App() {
         try {
           const colors = loadColorDefinition(text);
           setBaseColors(colors);
+          setLoadedColors(colors);
           computeShades(colors);
         } catch (e) {
           throw e;
@@ -98,7 +100,7 @@ function App() {
   return (
     <div className="App">
       <BaseColorControls
-        initialColors={initialColors}
+        initialColors={loadedColors}
         onColorChange={handleColorChange}
       />
       <div>
