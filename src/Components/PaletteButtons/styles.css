@@ -1,0 +1,11 @@
+.button-group {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.button-group .action-button {
+  padding: 4px;
+}

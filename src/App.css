@@ -24,8 +24,3 @@
   display: flex;
   flex-direction: column;
 }
-
-.App .compute-btn {
-  padding: 4px;
-  margin: 12px;
-}

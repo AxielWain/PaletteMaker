@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import { BaseColorControls } from './Components/BaseColorControls';
 import { JsonBox } from './Components/JsonBox';
+import { PaletteButtons } from './Components/PaletteButtons';
 import { PaletteGrid } from './Components/PaletteGrid';
 import {
   computeColorDefinition,
@@ -21,6 +22,7 @@ const copy = (text: string) => {
 };
 
 function App() {
+  const [isComputed, setIsComputed] = useState(false);
   const [colorJson, setColorJson] = useState('');
   const [baseColors, setBaseColors] = useState(initialColors);
   const [loadedColors, setLoadedColors] = useState(initialColors);
@@ -38,6 +40,10 @@ function App() {
     const newColors = [...baseColors];
     newColors.splice(index, 1, color);
     setBaseColors(newColors);
+    if (isComputed) {
+      resetComputedColors();
+      setIsComputed(false);
+    }
   };
 
   const computeShades = (colors: readonly string[]) => {
@@ -66,10 +72,27 @@ function App() {
 
     setColorJson(colorDefinition);
     copy(colorDefinition);
+    setIsComputed(true);
   };
 
   const handleComputeShades = () => {
     computeShades(baseColors);
+  };
+
+  const resetComputedColors = () => {
+    setDerivedColors([...initialDerivedColors]);
+    setDarkerShades([...emptyShades]);
+    setLighterShades([...emptyShades]);
+    setDerivedDarkerShades([...emptyDerivedShades]);
+    setDerivedLighterShades([...emptyDerivedShades]);
+    setColorJson('');
+  };
+
+  const handleResetColors = () => {
+    resetComputedColors();
+    const baseColors = [...initialColors];
+    setBaseColors(baseColors);
+    setLoadedColors(baseColors);
   };
 
   const handleCopy = () => {
@@ -130,9 +153,10 @@ function App() {
             />
           </div>
         </div>
-        <button className="compute-btn" onClick={handleComputeShades}>
-          Compute Palette
-        </button>
+        <PaletteButtons
+          onComputePalette={handleComputeShades}
+          onResetPalette={handleResetColors}
+        />
       </div>
       <div>
         <JsonBox
