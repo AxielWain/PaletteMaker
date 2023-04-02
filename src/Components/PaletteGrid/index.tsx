@@ -3,7 +3,7 @@ import { ColorPreview } from '../ColorPreview';
 import './styles.css';
 
 type Props = {
-  colors: string[] | readonly string[];
+  colors: readonly string[];
   columnCount: number;
 };
 

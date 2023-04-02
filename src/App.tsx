@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import { BaseColorControls } from './Components/BaseColorControls';
+import { ContrastPreview } from './Components/ContrastPreview';
 import { JsonBox } from './Components/JsonBox';
 import { PaletteButtons } from './Components/PaletteButtons';
 import { PaletteGrid } from './Components/PaletteGrid';
@@ -24,8 +25,8 @@ const copy = (text: string) => {
 function App() {
   const [isComputed, setIsComputed] = useState(false);
   const [colorJson, setColorJson] = useState('');
-  const [baseColors, setBaseColors] = useState(initialColors);
-  const [loadedColors, setLoadedColors] = useState(initialColors);
+  const [baseColors, setBaseColors] = useState([...initialColors]);
+  const [loadedColors, setLoadedColors] = useState([...initialColors]);
   const [darkerShades, setDarkerShades] = useState([...emptyShades]);
   const [lighterShades, setLighterShades] = useState([...emptyShades]);
   const [derivedColors, setDerivedColors] = useState(initialDerivedColors);
@@ -42,7 +43,6 @@ function App() {
     setBaseColors(newColors);
     if (isComputed) {
       resetComputedColors();
-      setIsComputed(false);
     }
   };
 
@@ -86,6 +86,7 @@ function App() {
     setDerivedDarkerShades([...emptyDerivedShades]);
     setDerivedLighterShades([...emptyDerivedShades]);
     setColorJson('');
+    setIsComputed(false);
   };
 
   const handleResetColors = () => {
@@ -158,11 +159,22 @@ function App() {
           onResetPalette={handleResetColors}
         />
       </div>
-      <div>
+      <div className="right-panel">
         <JsonBox
           jsonString={colorJson}
           onCopy={handleCopy}
           onPaste={handlePaste}
+        />
+        <ContrastPreview
+          isComputed={isComputed}
+          background={lighterShades[39]}
+          foreground={baseColors[0]}
+          baseColors={baseColors}
+          darkerShades={darkerShades}
+          lighterShades={lighterShades}
+          derivedColors={derivedColors}
+          derivedDarkerShades={derivedDarkerShades}
+          derivedLighterShades={derivedLighterShades}
         />
       </div>
     </div>

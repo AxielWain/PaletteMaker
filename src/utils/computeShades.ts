@@ -1,8 +1,8 @@
 import { darken, lighten, parseToHsl } from 'polished';
 import { TRANSPARENT_COLOR } from './constants';
 
-const higherLightnessThreshold = 0.8;
-const lowerLightnessThreshold = 0.2;
+const higherLightnessThreshold = 0.9;
+const lowerLightnessThreshold = 0.25;
 
 export function computeShades(color: string, maxShades = 6) {
   const { lightness } = parseToHsl(color);
