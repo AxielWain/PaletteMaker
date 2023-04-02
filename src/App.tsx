@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import './App.css';
 import { BaseColorControls } from './Components/BaseColorControls';
-import { BaseColorsPreview } from './Components/BaseColorsPreview';
 import { JsonBox } from './Components/JsonBox';
-import { ShadesGridPreview } from './Components/ShadesGridPreview';
+import { PaletteGrid } from './Components/PaletteGrid';
 import {
   computeColorDefinition,
   computeDerivedColors,
@@ -106,23 +105,26 @@ function App() {
       <div>
         <div className="palette-grids">
           <div className="palette">
-            <ShadesGridPreview
+            <PaletteGrid
               colors={lighterShades}
               columnCount={initialColors.length}
             />
-            <BaseColorsPreview colors={baseColors} />
-            <ShadesGridPreview
+            <PaletteGrid colors={baseColors} columnCount={baseColors.length} />
+            <PaletteGrid
               colors={darkerShades}
               columnCount={initialColors.length}
             />
           </div>
           <div className="palette">
-            <ShadesGridPreview
+            <PaletteGrid
               colors={derivedLighterShades}
               columnCount={derivedColors.length}
             />
-            <BaseColorsPreview colors={derivedColors} />
-            <ShadesGridPreview
+            <PaletteGrid
+              colors={derivedColors}
+              columnCount={derivedColors.length}
+            />
+            <PaletteGrid
               colors={derivedDarkerShades}
               columnCount={derivedColors.length}
             />

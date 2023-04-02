@@ -3,15 +3,15 @@ import { ColorPreview } from '../ColorPreview';
 import './styles.css';
 
 type Props = {
-  colors: string[];
+  colors: string[] | readonly string[];
   columnCount: number;
 };
 
-export function ShadesGridPreview({ colors, columnCount }: Props) {
+export function PaletteGrid({ colors, columnCount }: Props) {
   const keyIds = useKeyIds(colors.length);
   return (
     <div
-      className="shades-grid"
+      className="palette-grid"
       style={{ gridTemplateColumns: `repeat(${columnCount}, 1fr)` }}
     >
       {colors.map((color, index) => (
