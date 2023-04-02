@@ -47,12 +47,12 @@ function App() {
   };
 
   const computeShades = (colors: readonly string[]) => {
-    const baseShades = computeShadesGrid(colors, 6);
+    const baseShades = computeShadesGrid(colors);
     setDarkerShades(baseShades.darkerGridColors);
     setLighterShades(baseShades.lighterGridColors);
 
     const inBetweenColors = computeDerivedColors(colors);
-    const derivedShades = computeShadesGrid(inBetweenColors, 4);
+    const derivedShades = computeShadesGrid(inBetweenColors);
     setDerivedColors(inBetweenColors);
     setDerivedDarkerShades(derivedShades.darkerGridColors);
     setDerivedLighterShades(derivedShades.lighterGridColors);

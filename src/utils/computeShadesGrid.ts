@@ -1,19 +1,11 @@
 import { computeShades } from './computeShades';
 
-export function computeShadesGrid(
-  colors: readonly string[],
-  numberOfShades: number,
-  maxShades = 6
-) {
+export function computeShadesGrid(colors: readonly string[], maxShades = 6) {
   const darkerColors: string[][] = [];
   const lighterColors: string[][] = [];
 
   for (const color of colors) {
-    const { darkerShades, lighterShades } = computeShades(
-      color,
-      numberOfShades,
-      maxShades
-    );
+    const { darkerShades, lighterShades } = computeShades(color, maxShades);
     darkerColors.push(darkerShades);
     lighterColors.push(lighterShades);
   }
