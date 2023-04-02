@@ -4,7 +4,7 @@
   box-sizing: border-box;
   min-height: 200px;
   max-height: 200px;
-  overflow-y: auto;
+  overflow-y: scroll;
   position: relative;
 }
 

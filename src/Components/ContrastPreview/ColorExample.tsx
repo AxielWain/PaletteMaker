@@ -21,7 +21,7 @@ export function ColorExample({ inverse, isComputed, shades }: Props) {
               key={shadeName}
               style={style(shade.color)}
             >
-              {shadeName}
+              {shadeName}: {shade.color}
             </p>
           );
         })}

@@ -2,7 +2,7 @@ import { darken, lighten, parseToHsl } from 'polished';
 import { TRANSPARENT_COLOR } from './constants';
 
 const higherLightnessThreshold = 0.9;
-const lowerLightnessThreshold = 0.25;
+const lowerLightnessThreshold = 0.1;
 
 export function computeShades(color: string, maxShades = 6) {
   const { lightness } = parseToHsl(color);
@@ -16,7 +16,7 @@ export function computeShades(color: string, maxShades = 6) {
 
   for (let i = 0; i < maxShades; i++) {
     if (darkerLuminance >= lowerLightnessThreshold) {
-      darkerLuminance += deltaChange;
+      darkerLuminance -= deltaChange;
       darkerShades.push(darken(deltaChange * (darkerShades.length + 1), color));
     }
 

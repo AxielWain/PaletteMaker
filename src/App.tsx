@@ -12,7 +12,12 @@ import {
   getEmptyShadesGrid,
   loadColorDefinition,
 } from './utils';
-import { baseLabels, derivedLabels, initialColors } from './utils/constants';
+import {
+  TRANSPARENT_COLOR,
+  baseLabels,
+  derivedLabels,
+  initialColors,
+} from './utils/constants';
 
 const emptyShades = getEmptyShadesGrid(initialColors.length);
 const initialDerivedColors = getEmptyShadesGrid(6, 1);
@@ -120,6 +125,10 @@ function App() {
       });
   };
 
+  const backgroundColor =
+    lighterShades[39] !== TRANSPARENT_COLOR ? lighterShades[39] : baseColors[7];
+  const foregroundColor = baseColors[0];
+
   return (
     <div className="App">
       <BaseColorControls
@@ -167,8 +176,8 @@ function App() {
         />
         <ContrastPreview
           isComputed={isComputed}
-          background={lighterShades[39]}
-          foreground={baseColors[0]}
+          background={backgroundColor}
+          foreground={foregroundColor}
           baseColors={baseColors}
           darkerShades={darkerShades}
           lighterShades={lighterShades}

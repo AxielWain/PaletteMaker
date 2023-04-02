@@ -1,5 +1,7 @@
-import { hsl, parseToHsl } from 'polished';
-import { HslColor } from 'polished/lib/types/color';
+import { LabaColor, colord, extend } from 'colord';
+import labPlugin from 'colord/plugins/lab';
+
+extend([labPlugin]);
 
 export function computeDerivedColors(
   colors: readonly string[],
@@ -7,18 +9,20 @@ export function computeDerivedColors(
   totalColors = 6
 ) {
   const derivedColors: string[] = [];
-  const hslColors = colors.map((color) => parseToHsl(color));
+
+  const labColors = colors.map((color) => colord(color).toLab());
   const limitIndex = startIndex + totalColors;
   for (let i = startIndex; i < limitIndex; i++) {
-    const firstColor = hslColors[i];
+    const firstColor = labColors[i];
     const secondColor =
-      i < limitIndex ? hslColors[i + 1] : hslColors[startIndex];
-    const meanColor: HslColor = {
-      hue: (firstColor.hue + secondColor.hue) / 2,
-      saturation: (firstColor.saturation + secondColor.saturation) / 2,
-      lightness: (firstColor.lightness + secondColor.lightness) / 2,
+      i < limitIndex ? labColors[i + 1] : labColors[startIndex];
+    const meanColor: LabaColor = {
+      l: (firstColor.l + secondColor.l) / 2,
+      a: (firstColor.a + secondColor.a) / 2,
+      b: (firstColor.b + secondColor.b) / 2,
+      alpha: 1,
     };
-    derivedColors.push(hsl(meanColor));
+    derivedColors.push(colord(meanColor).toHex());
   }
 
   return derivedColors;

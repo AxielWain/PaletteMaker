@@ -58,7 +58,7 @@ export function ContrastPreview({
         <label>Shade Index:</label>
         <input
           min={0}
-          max={palette.length}
+          max={palette.length - 1}
           type="number"
           value={currentShade}
           onChange={(e) => {
