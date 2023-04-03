@@ -85,7 +85,6 @@ function App() {
     );
 
     setColorJson(colorDefinition);
-    copy(colorDefinition);
     setIsComputed(true);
   };
 
@@ -110,28 +109,25 @@ function App() {
     setLoadedColors(baseColors);
   };
 
+  const handleJsonBoxChange = (value: string) => {
+    setColorJson(value);
+  };
+
   const handleCopy = () => {
     copy(colorJson);
   };
 
-  const handlePaste = () => {
-    navigator.clipboard
-      .readText()
-      .then((text) => {
-        try {
-          const colors = loadColorDefinition(text);
-          setBaseColors(colors);
-          setLoadedColors(colors);
-          computeShades(colors);
-        } catch (e) {
-          throw e;
-        }
-      })
-      .catch(() => {
-        console.warn(
-          'Could not load Color Definition from pasted json, no changes made'
-        );
-      });
+  const handleLoad = () => {
+    try {
+      const colors = loadColorDefinition(colorJson);
+      setBaseColors(colors);
+      setLoadedColors(colors);
+      computeShades(colors);
+    } catch (e) {
+      console.warn(
+        'Could not load Color Definition from pasted json, no changes made'
+      );
+    }
   };
 
   const backgroundColor =
@@ -212,8 +208,9 @@ function App() {
       <div className="right-panel">
         <JsonBox
           jsonString={colorJson}
+          onChange={handleJsonBoxChange}
           onCopy={handleCopy}
-          onPaste={handlePaste}
+          onLoad={handleLoad}
         />
         <ContrastPreview
           isComputed={isComputed}

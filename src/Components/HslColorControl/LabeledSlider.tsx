@@ -19,7 +19,7 @@ export function LabeledSlider({
   onChange,
 }: Props) {
   const [id] = useState(nanoid(10));
-  const formattedValue = step < 1 ? (value * 100).toFixed() : value;
+  const formattedValue = (step < 1 ? value * 100 : value).toFixed();
   return (
     <div className="slider-container">
       <label htmlFor={id} className="label">
