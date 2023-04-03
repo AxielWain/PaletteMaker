@@ -30,3 +30,40 @@ export const derivedLabels = Object.freeze([
   'bluemagenta',
   'magentared',
 ]);
+
+export const columnBaseHeaders = Object.freeze([
+  'w',
+  'r',
+  'y',
+  'g',
+  'c',
+  'b',
+  'm',
+  'b',
+]);
+
+export const columnDerivedHeaders = Object.freeze([
+  'ry',
+  'yg',
+  'gc',
+  'cb',
+  'bm',
+  'mr',
+]);
+
+export const rowHeaders = Object.freeze([
+  '',
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  'H',
+  '7',
+  '8',
+  '9',
+  '10',
+  '11',
+  '12',
+]);

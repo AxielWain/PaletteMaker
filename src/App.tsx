@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import { BaseColorControls } from './Components/BaseColorControls';
 import { ContrastPreview } from './Components/ContrastPreview';
+import { HeaderGrid } from './Components/GridHeader';
 import { JsonBox } from './Components/JsonBox';
 import { PaletteButtons } from './Components/PaletteButtons';
 import { PaletteGrid } from './Components/PaletteGrid';
@@ -15,8 +16,11 @@ import {
 import {
   TRANSPARENT_COLOR,
   baseLabels,
+  columnBaseHeaders,
+  columnDerivedHeaders,
   derivedLabels,
   initialColors,
+  rowHeaders,
 } from './utils/constants';
 
 const emptyShades = getEmptyShadesGrid(initialColors.length);
@@ -137,30 +141,55 @@ function App() {
       />
       <div>
         <div className="palette-grids">
-          <div className="palette">
-            <PaletteGrid
-              colors={lighterShades}
+          <HeaderGrid
+            alignItems="center"
+            columnCount={1}
+            headers={rowHeaders}
+            justifyContent="end"
+          />
+          <div>
+            <HeaderGrid
+              alignItems="end"
               columnCount={initialColors.length}
+              headers={columnBaseHeaders}
+              justifyContent="center"
             />
-            <PaletteGrid colors={baseColors} columnCount={baseColors.length} />
-            <PaletteGrid
-              colors={darkerShades}
-              columnCount={initialColors.length}
-            />
+            <div className="palette">
+              <PaletteGrid
+                colors={lighterShades}
+                columnCount={initialColors.length}
+              />
+              <PaletteGrid
+                colors={baseColors}
+                columnCount={baseColors.length}
+              />
+              <PaletteGrid
+                colors={darkerShades}
+                columnCount={initialColors.length}
+              />
+            </div>
           </div>
-          <div className="palette">
-            <PaletteGrid
-              colors={derivedLighterShades}
+          <div>
+            <HeaderGrid
+              alignItems="end"
               columnCount={derivedColors.length}
+              headers={columnDerivedHeaders}
+              justifyContent="center"
             />
-            <PaletteGrid
-              colors={derivedColors}
-              columnCount={derivedColors.length}
-            />
-            <PaletteGrid
-              colors={derivedDarkerShades}
-              columnCount={derivedColors.length}
-            />
+            <div className="palette">
+              <PaletteGrid
+                colors={derivedLighterShades}
+                columnCount={derivedColors.length}
+              />
+              <PaletteGrid
+                colors={derivedColors}
+                columnCount={derivedColors.length}
+              />
+              <PaletteGrid
+                colors={derivedDarkerShades}
+                columnCount={derivedColors.length}
+              />
+            </div>
           </div>
         </div>
         <PaletteButtons
