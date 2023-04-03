@@ -5,9 +5,10 @@ import './styles.css';
 type Props = {
   colors: readonly string[];
   columnCount: number;
+  onClick: (color: string) => void;
 };
 
-export function PaletteGrid({ colors, columnCount }: Props) {
+export function PaletteGrid({ colors, columnCount, onClick }: Props) {
   const keyIds = useKeyIds(colors.length);
   return (
     <div
@@ -15,7 +16,7 @@ export function PaletteGrid({ colors, columnCount }: Props) {
       style={{ gridTemplateColumns: `repeat(${columnCount}, 1fr)` }}
     >
       {colors.map((color, index) => (
-        <ColorPreview key={keyIds[index]} color={color} />
+        <ColorPreview key={keyIds[index]} color={color} onClick={onClick} />
       ))}
     </div>
   );

@@ -1,0 +1,39 @@
+.palette-controls .button-group {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.palette-controls .action-button {
+  padding: 4px;
+}
+
+.palette-controls .color-copy {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.palette-controls .color-label {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.palette-controls .color-value {
+  display: inline-block;
+  text-align: right;
+  width: 72px;
+}
+
+.palette-controls .color-preview {
+  border-style: solid;
+  border-width: 1px;
+  box-sizing: border-box;
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+}

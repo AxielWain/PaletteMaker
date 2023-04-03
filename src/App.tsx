@@ -4,7 +4,7 @@ import { BaseColorControls } from './Components/BaseColorControls';
 import { ContrastPreview } from './Components/ContrastPreview';
 import { HeaderGrid } from './Components/GridHeader';
 import { JsonBox } from './Components/JsonBox';
-import { PaletteButtons } from './Components/PaletteButtons';
+import { PaletteControls } from './Components/PaletteControls';
 import { PaletteGrid } from './Components/PaletteGrid';
 import {
   computeColorDefinition,
@@ -34,6 +34,7 @@ const copy = (text: string) => {
 function App() {
   const [isComputed, setIsComputed] = useState(false);
   const [colorJson, setColorJson] = useState('');
+  const [clickedColor, setClickedColor] = useState(initialColors[0]);
   const [baseColors, setBaseColors] = useState([...initialColors]);
   const [loadedColors, setLoadedColors] = useState([...initialColors]);
   const [darkerShades, setDarkerShades] = useState([...emptyShades]);
@@ -53,6 +54,10 @@ function App() {
     if (isComputed) {
       resetComputedColors();
     }
+  };
+
+  const handleClickColor = (color: string) => {
+    setClickedColor(color);
   };
 
   const computeShades = (colors: readonly string[]) => {
@@ -158,14 +163,17 @@ function App() {
               <PaletteGrid
                 colors={lighterShades}
                 columnCount={initialColors.length}
+                onClick={handleClickColor}
               />
               <PaletteGrid
                 colors={baseColors}
                 columnCount={baseColors.length}
+                onClick={handleClickColor}
               />
               <PaletteGrid
                 colors={darkerShades}
                 columnCount={initialColors.length}
+                onClick={handleClickColor}
               />
             </div>
           </div>
@@ -180,19 +188,23 @@ function App() {
               <PaletteGrid
                 colors={derivedLighterShades}
                 columnCount={derivedColors.length}
+                onClick={handleClickColor}
               />
               <PaletteGrid
                 colors={derivedColors}
                 columnCount={derivedColors.length}
+                onClick={handleClickColor}
               />
               <PaletteGrid
                 colors={derivedDarkerShades}
                 columnCount={derivedColors.length}
+                onClick={handleClickColor}
               />
             </div>
           </div>
         </div>
-        <PaletteButtons
+        <PaletteControls
+          clickedColor={clickedColor}
           onComputePalette={handleComputeShades}
           onResetPalette={handleResetColors}
         />
