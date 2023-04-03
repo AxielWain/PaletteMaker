@@ -28,9 +28,14 @@
 
 .slider-container > .label {
   text-align: right;
-  width: 32px;
+  width: 12px;
 }
 
 .slider-container > .slider {
-  width: 132px;
+  text-align: right;
+  width: 128px;
+}
+
+.slider-container > .value {
+  width: 36px;
 }

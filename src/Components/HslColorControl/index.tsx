@@ -7,11 +7,22 @@ import { LabeledSlider } from './LabeledSlider';
 import './styles.css';
 
 type Props = {
+  minHue: number;
+  maxHue: number;
+  minLightness: number;
+  maxLightness: number;
   initialColor: string;
   onColorChange: (color: string) => void;
 };
 
-export function HslColorControl({ initialColor, onColorChange }: Props) {
+export function HslColorControl({
+  minHue,
+  maxHue,
+  minLightness,
+  maxLightness,
+  initialColor,
+  onColorChange,
+}: Props) {
   const hslColor = parseToHsl(initialColor);
   const [hue, setHue] = useState(hslColor.hue);
   const [saturation, setSaturation] = useState(hslColor.saturation);
@@ -44,14 +55,14 @@ export function HslColorControl({ initialColor, onColorChange }: Props) {
       <ColorPreview color={color} />
       <div className="sliders">
         <LabeledSlider
-          label="Hue"
-          min={0}
-          max={360}
+          label="H"
+          min={minHue}
+          max={maxHue}
           value={hue}
           onChange={handleHueChange}
         />
         <LabeledSlider
-          label="Sat"
+          label="S"
           min={0}
           max={1}
           step={0.01}
@@ -59,9 +70,9 @@ export function HslColorControl({ initialColor, onColorChange }: Props) {
           onChange={handleSaturationChange}
         />
         <LabeledSlider
-          label="Lig"
-          min={0}
-          max={1}
+          label="L"
+          min={minLightness}
+          max={maxLightness}
           step={0.01}
           value={lightness}
           onChange={handleLightnessChange}

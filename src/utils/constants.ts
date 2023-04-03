@@ -39,7 +39,7 @@ export const columnBaseHeaders = Object.freeze([
   'c',
   'b',
   'm',
-  'b',
+  'k',
 ]);
 
 export const columnDerivedHeaders = Object.freeze([

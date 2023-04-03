@@ -1,4 +1,5 @@
 import { HslColorControl } from '../HslColorControl';
+import { ControlRestrictions } from './constants';
 import './styles.css';
 
 type Props = {
@@ -11,6 +12,7 @@ export function BaseColorControls({ initialColors, onColorChange }: Props) {
     <div className="color-controls">
       {initialColors.map((color, index) => (
         <HslColorControl
+          {...ControlRestrictions[index]}
           key={color}
           initialColor={color}
           onColorChange={(color) => {
