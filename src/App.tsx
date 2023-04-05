@@ -2,10 +2,8 @@ import { useState } from 'react';
 import './App.css';
 import { BaseColorControls } from './Components/BaseColorControls';
 import { ContrastPreview } from './Components/ContrastPreview';
-import { GridHeader } from './Components/GridHeader';
 import { JsonBox } from './Components/JsonBox';
-import { PaletteControls } from './Components/PaletteControls';
-import { PaletteGrid } from './Components/PaletteGrid';
+import { PaletteTable } from './Components/PaletteTable';
 import {
   computeColorDefinition,
   computeDerivedColors,
@@ -16,11 +14,8 @@ import {
 import {
   TRANSPARENT_COLOR,
   baseLabels,
-  columnBaseHeaders,
-  columnDerivedHeaders,
   derivedLabels,
   initialColors,
-  rowHeaders,
 } from './utils/constants';
 
 const emptyShades = getEmptyShadesGrid(initialColors.length);
@@ -34,7 +29,6 @@ const copy = (text: string) => {
 function App() {
   const [isComputed, setIsComputed] = useState(false);
   const [colorJson, setColorJson] = useState('');
-  const [clickedColor, setClickedColor] = useState(initialColors[0]);
   const [baseColors, setBaseColors] = useState([...initialColors]);
   const [loadedColors, setLoadedColors] = useState([...initialColors]);
   const [darkerShades, setDarkerShades] = useState([...emptyShades]);
@@ -54,10 +48,6 @@ function App() {
     if (isComputed) {
       resetComputedColors();
     }
-  };
-
-  const handleClickColor = (color: string) => {
-    setClickedColor(color);
   };
 
   const computeShades = (colors: readonly string[]) => {
@@ -140,82 +130,16 @@ function App() {
         initialColors={loadedColors}
         onColorChange={handleColorChange}
       />
-      <div>
-        <div className="palette-grids">
-          <div className="palette-grid-column">
-            <GridHeader
-              alignItems="center"
-              columnCount={1}
-              headers={rowHeaders}
-              justifyContent="end"
-            />
-            <div>
-              <GridHeader
-                alignItems="end"
-                columnCount={initialColors.length}
-                headers={columnBaseHeaders}
-                justifyContent="center"
-              />
-              <div className="palette">
-                <PaletteGrid
-                  colors={lighterShades}
-                  columnCount={initialColors.length}
-                  onClick={handleClickColor}
-                />
-                <PaletteGrid
-                  colors={baseColors}
-                  columnCount={baseColors.length}
-                  onClick={handleClickColor}
-                />
-                <PaletteGrid
-                  colors={darkerShades}
-                  columnCount={initialColors.length}
-                  onClick={handleClickColor}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="palette-grid-column">
-            <GridHeader
-              className="derived-column-header"
-              alignItems="center"
-              columnCount={1}
-              headers={rowHeaders}
-              justifyContent="end"
-            />
-            <div>
-              <GridHeader
-                alignItems="end"
-                columnCount={derivedColors.length}
-                headers={columnDerivedHeaders}
-                justifyContent="center"
-              />
-              <div className="palette">
-                <PaletteGrid
-                  colors={derivedLighterShades}
-                  columnCount={derivedColors.length}
-                  onClick={handleClickColor}
-                />
-                <PaletteGrid
-                  colors={derivedColors}
-                  columnCount={derivedColors.length}
-                  onClick={handleClickColor}
-                />
-                <PaletteGrid
-                  colors={derivedDarkerShades}
-                  columnCount={derivedColors.length}
-                  onClick={handleClickColor}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <PaletteControls
-          clickedColor={clickedColor}
-          onComputePalette={handleComputeShades}
-          onResetPalette={handleResetColors}
-        />
-      </div>
+      <PaletteTable
+        baseColors={baseColors}
+        lighterShades={lighterShades}
+        darkerShades={darkerShades}
+        derivedColors={derivedColors}
+        derivedLighterShades={derivedLighterShades}
+        derivedDarkerShades={derivedDarkerShades}
+        onComputePalette={handleComputeShades}
+        onResetPalette={handleResetColors}
+      />
       <div className="right-panel">
         <ContrastPreview
           isComputed={isComputed}

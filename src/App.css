@@ -13,29 +13,6 @@
   gap: 48px;
 }
 
-.palette-grids {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 8px;
-}
-
-.palette-grids .palette-grid-column {
-  display: flex;
-  flex-direction: row;
-  gap: 2px;
-}
-
-.palette-grids .derived-column-header {
-  display: none;
-}
-
-.App .palette {
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
-}
-
 .App .right-panel {
   display: flex;
   flex-direction: column;
@@ -51,15 +28,5 @@
 
   .App .right-panel {
     width: 100%;
-  }
-}
-
-@media (max-width: 644px) {
-  .palette-grids {
-    flex-direction: column;
-  }
-
-  .palette-grids .derived-column-header {
-    display: block;
   }
 }
