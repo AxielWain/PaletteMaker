@@ -39,3 +39,9 @@
 .slider-container > .value {
   width: 36px;
 }
+
+@media (max-width: 1280px) {
+  .hsl-sliders {
+    justify-content: center;
+  }
+}

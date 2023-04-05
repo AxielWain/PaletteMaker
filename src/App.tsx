@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import { BaseColorControls } from './Components/BaseColorControls';
 import { ContrastPreview } from './Components/ContrastPreview';
-import { HeaderGrid } from './Components/GridHeader';
+import { GridHeader } from './Components/GridHeader';
 import { JsonBox } from './Components/JsonBox';
 import { PaletteControls } from './Components/PaletteControls';
 import { PaletteGrid } from './Components/PaletteGrid';
@@ -142,60 +142,71 @@ function App() {
       />
       <div>
         <div className="palette-grids">
-          <HeaderGrid
-            alignItems="center"
-            columnCount={1}
-            headers={rowHeaders}
-            justifyContent="end"
-          />
-          <div>
-            <HeaderGrid
-              alignItems="end"
-              columnCount={initialColors.length}
-              headers={columnBaseHeaders}
-              justifyContent="center"
+          <div className="palette-grid-column">
+            <GridHeader
+              alignItems="center"
+              columnCount={1}
+              headers={rowHeaders}
+              justifyContent="end"
             />
-            <div className="palette">
-              <PaletteGrid
-                colors={lighterShades}
+            <div>
+              <GridHeader
+                alignItems="end"
                 columnCount={initialColors.length}
-                onClick={handleClickColor}
+                headers={columnBaseHeaders}
+                justifyContent="center"
               />
-              <PaletteGrid
-                colors={baseColors}
-                columnCount={baseColors.length}
-                onClick={handleClickColor}
-              />
-              <PaletteGrid
-                colors={darkerShades}
-                columnCount={initialColors.length}
-                onClick={handleClickColor}
-              />
+              <div className="palette">
+                <PaletteGrid
+                  colors={lighterShades}
+                  columnCount={initialColors.length}
+                  onClick={handleClickColor}
+                />
+                <PaletteGrid
+                  colors={baseColors}
+                  columnCount={baseColors.length}
+                  onClick={handleClickColor}
+                />
+                <PaletteGrid
+                  colors={darkerShades}
+                  columnCount={initialColors.length}
+                  onClick={handleClickColor}
+                />
+              </div>
             </div>
           </div>
-          <div>
-            <HeaderGrid
-              alignItems="end"
-              columnCount={derivedColors.length}
-              headers={columnDerivedHeaders}
-              justifyContent="center"
+          <div className="palette-grid-column">
+            <GridHeader
+              className="derived-column-header"
+              alignItems="center"
+              columnCount={1}
+              headers={rowHeaders}
+              justifyContent="end"
             />
-            <div className="palette">
-              <PaletteGrid
-                colors={derivedLighterShades}
+            <div>
+              <GridHeader
+                alignItems="end"
                 columnCount={derivedColors.length}
-                onClick={handleClickColor}
+                headers={columnDerivedHeaders}
+                justifyContent="center"
               />
-              <PaletteGrid
-                colors={derivedColors}
-                columnCount={derivedColors.length}
-                onClick={handleClickColor}
-              />
-              <PaletteGrid
-                colors={derivedDarkerShades}
-                columnCount={derivedColors.length}
-                onClick={handleClickColor}
-              />
+              <div className="palette">
+                <PaletteGrid
+                  colors={derivedLighterShades}
+                  columnCount={derivedColors.length}
+                  onClick={handleClickColor}
+                />
+                <PaletteGrid
+                  colors={derivedColors}
+                  columnCount={derivedColors.length}
+                  onClick={handleClickColor}
+                />
+                <PaletteGrid
+                  colors={derivedDarkerShades}
+                  columnCount={derivedColors.length}
+                  onClick={handleClickColor}
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -206,12 +217,6 @@ function App() {
         />
       </div>
       <div className="right-panel">
-        <JsonBox
-          jsonString={colorJson}
-          onChange={handleJsonBoxChange}
-          onCopy={handleCopy}
-          onLoad={handleLoad}
-        />
         <ContrastPreview
           isComputed={isComputed}
           background={backgroundColor}
@@ -222,6 +227,12 @@ function App() {
           derivedColors={derivedColors}
           derivedDarkerShades={derivedDarkerShades}
           derivedLighterShades={derivedLighterShades}
+        />
+        <JsonBox
+          jsonString={colorJson}
+          onChange={handleJsonBoxChange}
+          onCopy={handleCopy}
+          onLoad={handleLoad}
         />
       </div>
     </div>

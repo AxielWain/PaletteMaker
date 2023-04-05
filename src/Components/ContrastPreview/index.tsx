@@ -55,7 +55,7 @@ export function ContrastPreview({
         <strong>Contrast Preview</strong>
       </div>
       <div>
-        <label>Shade Index:</label>
+        <label>Shade Row:</label>
         <input
           min={0}
           max={palette.length - 1}
@@ -66,8 +66,10 @@ export function ContrastPreview({
           }}
         />
       </div>
-      <Theme inverse={false} />
-      <Theme inverse />
+      <div className="themes">
+        <Theme inverse={false} />
+        <Theme inverse />
+      </div>
     </div>
   );
 }

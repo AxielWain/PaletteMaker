@@ -1,8 +1,8 @@
-.header-grid {
+.grid-header {
   display: grid;
 }
 
-.header-grid > .title {
+.grid-header > .title {
   box-sizing: border-box;
   display: flex;
   height: 40px;
