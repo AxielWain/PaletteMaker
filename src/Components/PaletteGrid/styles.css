@@ -12,3 +12,10 @@
   border-width: 1px;
   border-style: solid;
 }
+
+@media (max-width: 644px) {
+  .palette-grid > .color-preview {
+    height: 32px;
+    width: 32px;
+  }
+}

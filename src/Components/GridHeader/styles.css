@@ -8,3 +8,10 @@
   height: 40px;
   width: 40px;
 }
+
+@media (max-width: 644px) {
+  .grid-header > .title {
+    height: 32px;
+    width: 32px;
+  }
+}
