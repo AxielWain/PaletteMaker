@@ -18,9 +18,13 @@ import {
   TRANSPARENT_COLOR,
 } from './utils/constants'
 
-const emptyShades = getEmptyShadesGrid(initialColors.length)
+const maxShades = 12
+const emptyShades = getEmptyShadesGrid(initialColors.length, maxShades)
 const initialDerivedColors = computeDerivedColors(initialColors)
-const emptyDerivedShades = getEmptyShadesGrid(initialDerivedColors.length)
+const emptyDerivedShades = getEmptyShadesGrid(
+  initialDerivedColors.length,
+  maxShades
+)
 
 const copy = (text: string) => {
   void navigator.clipboard.writeText(text)
@@ -31,15 +35,9 @@ function App() {
   const [colorJson, setColorJson] = useState('')
   const [baseColors, setBaseColors] = useState([...initialColors])
   const [loadedColors, setLoadedColors] = useState([...initialColors])
-  const [darkerShades, setDarkerShades] = useState([...emptyShades])
-  const [lighterShades, setLighterShades] = useState([...emptyShades])
   const [derivedColors, setDerivedColors] = useState(initialDerivedColors)
-  const [derivedDarkerShades, setDerivedDarkerShades] = useState([
-    ...emptyDerivedShades,
-  ])
-  const [derivedLighterShades, setDerivedLighterShades] = useState([
-    ...emptyDerivedShades,
-  ])
+  const [colorShades, setColorShades] = useState([...emptyShades])
+  const [derivedShades, setDerivedShades] = useState([...emptyDerivedShades])
 
   const handleColorChange = (index: number, color: string) => {
     const newColors = [...baseColors]
@@ -54,14 +52,12 @@ function App() {
 
   const computeShades = (colors: readonly string[]) => {
     const baseShades = computeShadesGrid(colors)
-    setDarkerShades(baseShades.darkerGridColors)
-    setLighterShades(baseShades.lighterGridColors)
+    setColorShades(baseShades)
 
     const inBetweenColors = computeDerivedColors(colors)
     const derivedShades = computeShadesGrid(inBetweenColors)
     setDerivedColors(inBetweenColors)
-    setDerivedDarkerShades(derivedShades.darkerGridColors)
-    setDerivedLighterShades(derivedShades.lighterGridColors)
+    setDerivedShades(derivedShades)
 
     const colorDefinition = JSON.stringify(
       computeColorDefinition({
@@ -85,12 +81,10 @@ function App() {
   }
 
   const resetComputedColors = () => {
-    setDarkerShades([...emptyShades])
-    setLighterShades([...emptyShades])
-    setDerivedDarkerShades([...emptyDerivedShades])
-    setDerivedLighterShades([...emptyDerivedShades])
     setColorJson('')
     setIsComputed(false)
+    setColorShades([...emptyShades])
+    setDerivedShades([...emptyDerivedShades])
   }
 
   const handleResetColors = () => {
@@ -121,8 +115,7 @@ function App() {
     }
   }
 
-  const backgroundColor =
-    lighterShades[39] !== TRANSPARENT_COLOR ? lighterShades[39] : baseColors[7]
+  const backgroundColor = baseColors[7]
   const foregroundColor = baseColors[0]
 
   return (
@@ -133,11 +126,9 @@ function App() {
       />
       <PaletteTable
         baseColors={baseColors}
-        lighterShades={lighterShades}
-        darkerShades={darkerShades}
+        colorShades={colorShades}
         derivedColors={derivedColors}
-        derivedLighterShades={derivedLighterShades}
-        derivedDarkerShades={derivedDarkerShades}
+        derivedShades={derivedShades}
         onComputePalette={handleComputeShades}
         onResetPalette={handleResetColors}
       />
@@ -147,11 +138,9 @@ function App() {
           background={backgroundColor}
           foreground={foregroundColor}
           baseColors={baseColors}
-          darkerShades={darkerShades}
-          lighterShades={lighterShades}
+          colorShades={colorShades}
           derivedColors={derivedColors}
-          derivedDarkerShades={derivedDarkerShades}
-          derivedLighterShades={derivedLighterShades}
+          derivedShades={derivedShades}
         />
         <JsonBox
           jsonString={colorJson}

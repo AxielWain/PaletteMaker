@@ -11,22 +11,18 @@ import './styles.css'
 
 type Props = {
   baseColors: readonly string[]
-  lighterShades: readonly string[]
-  darkerShades: readonly string[]
+  colorShades: readonly string[]
   derivedColors: readonly string[]
-  derivedLighterShades: readonly string[]
-  derivedDarkerShades: readonly string[]
+  derivedShades: readonly string[]
   onComputePalette: () => void
   onResetPalette: () => void
 }
 
 export function PaletteTable({
   baseColors,
-  lighterShades,
-  darkerShades,
+  colorShades,
   derivedColors,
-  derivedLighterShades,
-  derivedDarkerShades,
+  derivedShades,
   onComputePalette,
   onResetPalette,
 }: Props) {
@@ -36,16 +32,14 @@ export function PaletteTable({
       <div className="palette-grids">
         <PaletteTableColumn
           colors={baseColors}
-          lighterColors={lighterShades}
-          darkerColors={darkerShades}
+          shades={colorShades}
           columnHeaders={columnBaseHeaders}
           rowHeaders={rowHeaders}
           onClickedColor={setClickedColor}
         />
         <PaletteTableColumn
           colors={derivedColors}
-          lighterColors={derivedLighterShades}
-          darkerColors={derivedDarkerShades}
+          shades={derivedShades}
           columnHeaders={columnDerivedHeaders}
           rowHeaders={rowHeaders}
           rowHeadersClass="derived-column-header"
