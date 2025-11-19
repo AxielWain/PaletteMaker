@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from 'preact/hooks'
 import { VariantPreview } from './VariantPreview'
 import './styles.css'
 import { Shade } from './types'
@@ -61,8 +61,8 @@ export function ContrastPreview({
           max={palette.length - 1}
           type="number"
           value={currentShade}
-          onChange={(e) => {
-            setCurrentShade(parseFloat(e.target.value))
+          onInput={(e) => {
+            setCurrentShade(parseFloat(e.currentTarget.value))
           }}
         />
       </div>

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from 'preact/hooks'
 import './App.css'
 import { BaseColorControls } from './Components/BaseColorControls'
 import { ContrastPreview } from './Components/ContrastPreview'

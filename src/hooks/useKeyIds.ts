@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid'
-import { useMemo } from 'react'
+import { useMemo } from 'preact/hooks'
 
 export function useKeyIds(totalIds: number, idLength = 12) {
   const keyIds = useMemo(() => {

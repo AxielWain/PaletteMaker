@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid'
-import { useState } from 'react'
+import { useState } from 'preact/hooks'
 
 type Props = {
   label: string
@@ -33,7 +33,7 @@ export function LabeledSlider({
         max={max}
         step={step}
         value={value}
-        onChange={(e) => onChange(parseFloat(e.target.value))}
+        onInput={(e) => onChange(parseFloat(e.currentTarget.value))}
       />
       <span className="value">({formattedValue})</span>
     </div>

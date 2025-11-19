@@ -13,7 +13,7 @@ export function JsonBox({ jsonString, onChange, onCopy, onLoad }: Props) {
       <textarea
         className="json-box"
         value={jsonString}
-        onChange={(e) => onChange(e.target.value)}
+        onInput={(e) => onChange(e.currentTarget.value)}
       />
       <div className="horizontal-button-group">
         <button onClick={onCopy}>Copy</button>
