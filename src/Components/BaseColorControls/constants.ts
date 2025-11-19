@@ -1,9 +1,9 @@
 type HslRestriction = {
-  minHue: number;
-  maxHue: number;
-  minLightness: number;
-  maxLightness: number;
-};
+  minHue: number
+  maxHue: number
+  minLightness: number
+  maxLightness: number
+}
 
 export const ControlRestrictions: readonly HslRestriction[] = [
   // white
@@ -62,4 +62,4 @@ export const ControlRestrictions: readonly HslRestriction[] = [
     minLightness: 0,
     maxLightness: 0.2,
   },
-];
+]

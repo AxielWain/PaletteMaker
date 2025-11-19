@@ -1,11 +1,11 @@
-import { HslColorControl } from '../HslColorControl';
-import { ControlRestrictions } from './constants';
-import './styles.css';
+import { HslColorControl } from '../HslColorControl'
+import { ControlRestrictions } from './constants'
+import './styles.css'
 
 type Props = {
-  initialColors: readonly string[];
-  onColorChange: (index: number, color: string) => void;
-};
+  initialColors: readonly string[]
+  onColorChange: (index: number, color: string) => void
+}
 
 export function BaseColorControls({ initialColors, onColorChange }: Props) {
   return (
@@ -16,10 +16,10 @@ export function BaseColorControls({ initialColors, onColorChange }: Props) {
           key={color}
           initialColor={color}
           onColorChange={(color) => {
-            onColorChange(index, color);
+            onColorChange(index, color)
           }}
         />
       ))}
     </div>
-  );
+  )
 }

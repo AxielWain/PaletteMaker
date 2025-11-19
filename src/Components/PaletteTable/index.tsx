@@ -1,24 +1,24 @@
-import { useState } from 'react';
+import { useState } from 'react'
 import {
   columnBaseHeaders,
   columnDerivedHeaders,
   initialColors,
   rowHeaders,
-} from '../../utils/constants';
-import { PaletteControls } from '../PaletteControls';
-import { PaletteTableColumn } from './PaletteTableColumn';
-import './styles.css';
+} from '../../utils/constants'
+import { PaletteControls } from '../PaletteControls'
+import { PaletteTableColumn } from './PaletteTableColumn'
+import './styles.css'
 
 type Props = {
-  baseColors: readonly string[];
-  lighterShades: readonly string[];
-  darkerShades: readonly string[];
-  derivedColors: readonly string[];
-  derivedLighterShades: readonly string[];
-  derivedDarkerShades: readonly string[];
-  onComputePalette: () => void;
-  onResetPalette: () => void;
-};
+  baseColors: readonly string[]
+  lighterShades: readonly string[]
+  darkerShades: readonly string[]
+  derivedColors: readonly string[]
+  derivedLighterShades: readonly string[]
+  derivedDarkerShades: readonly string[]
+  onComputePalette: () => void
+  onResetPalette: () => void
+}
 
 export function PaletteTable({
   baseColors,
@@ -30,7 +30,7 @@ export function PaletteTable({
   onComputePalette,
   onResetPalette,
 }: Props) {
-  const [clickedColor, setClickedColor] = useState(initialColors[0]);
+  const [clickedColor, setClickedColor] = useState(initialColors[0])
   return (
     <div>
       <div className="palette-grids">
@@ -58,5 +58,5 @@ export function PaletteTable({
         onResetPalette={onResetPalette}
       />
     </div>
-  );
+  )
 }

@@ -1,11 +1,11 @@
-import { invert } from 'polished';
-import './styles.css';
+import { invert } from 'polished'
+import './styles.css'
 
 type Props = {
-  clickedColor: string;
-  onComputePalette: () => void;
-  onResetPalette: () => void;
-};
+  clickedColor: string
+  onComputePalette: () => void
+  onResetPalette: () => void
+}
 
 export function PaletteControls({
   clickedColor,
@@ -14,9 +14,9 @@ export function PaletteControls({
 }: Props) {
   const handleCopyColor = () => {
     navigator.clipboard.writeText(clickedColor).then(() => {
-      console.log('Color copied to clipboard', clickedColor);
-    });
-  };
+      console.log('Color copied to clipboard', clickedColor)
+    })
+  }
   return (
     <div className="palette-controls">
       <div className="button-group">
@@ -43,5 +43,5 @@ export function PaletteControls({
         </button>
       </div>
     </div>
-  );
+  )
 }

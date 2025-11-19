@@ -1,15 +1,15 @@
-import { useKeyIds } from '../../hooks';
-import { ColorPreview } from '../ColorPreview';
-import './styles.css';
+import { useKeyIds } from '../../hooks'
+import { ColorPreview } from '../ColorPreview'
+import './styles.css'
 
 type Props = {
-  colors: readonly string[];
-  columnCount: number;
-  onClick: (color: string) => void;
-};
+  colors: readonly string[]
+  columnCount: number
+  onClick: (color: string) => void
+}
 
 export function PaletteGrid({ colors, columnCount, onClick }: Props) {
-  const keyIds = useKeyIds(colors.length);
+  const keyIds = useKeyIds(colors.length)
   return (
     <div
       className="palette-grid"
@@ -19,5 +19,5 @@ export function PaletteGrid({ colors, columnCount, onClick }: Props) {
         <ColorPreview key={keyIds[index]} color={color} onClick={onClick} />
       ))}
     </div>
-  );
+  )
 }

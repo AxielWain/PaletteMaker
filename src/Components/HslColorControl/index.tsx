@@ -1,19 +1,19 @@
-import { parseToHsl } from 'polished';
-import hsl from 'polished/lib/color/hsl';
-import { HslColor } from 'polished/lib/types/color';
-import { useState } from 'react';
-import { ColorPreview } from '../ColorPreview';
-import { LabeledSlider } from './LabeledSlider';
-import './styles.css';
+import { parseToHsl } from 'polished'
+import hsl from 'polished/lib/color/hsl'
+import { HslColor } from 'polished/lib/types/color'
+import { useState } from 'react'
+import { ColorPreview } from '../ColorPreview'
+import { LabeledSlider } from './LabeledSlider'
+import './styles.css'
 
 type Props = {
-  minHue: number;
-  maxHue: number;
-  minLightness: number;
-  maxLightness: number;
-  initialColor: string;
-  onColorChange: (color: string) => void;
-};
+  minHue: number
+  maxHue: number
+  minLightness: number
+  maxLightness: number
+  initialColor: string
+  onColorChange: (color: string) => void
+}
 
 export function HslColorControl({
   minHue,
@@ -23,32 +23,32 @@ export function HslColorControl({
   initialColor,
   onColorChange,
 }: Props) {
-  const hslColor = parseToHsl(initialColor);
-  const [hue, setHue] = useState(hslColor.hue);
-  const [saturation, setSaturation] = useState(hslColor.saturation);
-  const [lightness, setLightness] = useState(hslColor.lightness);
-  const [color, setColor] = useState(initialColor);
+  const hslColor = parseToHsl(initialColor)
+  const [hue, setHue] = useState(hslColor.hue)
+  const [saturation, setSaturation] = useState(hslColor.saturation)
+  const [lightness, setLightness] = useState(hslColor.lightness)
+  const [color, setColor] = useState(initialColor)
 
   const updateColor = (color: HslColor) => {
-    const hexColor = hsl(color);
-    setColor(hexColor);
-    onColorChange(hexColor);
-  };
+    const hexColor = hsl(color)
+    setColor(hexColor)
+    onColorChange(hexColor)
+  }
 
   const handleHueChange = (value: number) => {
-    setHue(value);
-    updateColor({ hue: value, saturation, lightness });
-  };
+    setHue(value)
+    updateColor({ hue: value, saturation, lightness })
+  }
 
   const handleSaturationChange = (value: number) => {
-    setSaturation(value);
-    updateColor({ hue, saturation: value, lightness });
-  };
+    setSaturation(value)
+    updateColor({ hue, saturation: value, lightness })
+  }
 
   const handleLightnessChange = (value: number) => {
-    setLightness(value);
-    updateColor({ hue, saturation, lightness: value });
-  };
+    setLightness(value)
+    updateColor({ hue, saturation, lightness: value })
+  }
 
   return (
     <div className="hsl-sliders">
@@ -79,5 +79,5 @@ export function HslColorControl({
         />
       </div>
     </div>
-  );
+  )
 }

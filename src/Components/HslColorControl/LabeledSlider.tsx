@@ -1,14 +1,14 @@
-import { nanoid } from 'nanoid';
-import { useState } from 'react';
+import { nanoid } from 'nanoid'
+import { useState } from 'react'
 
 type Props = {
-  label: string;
-  min: number;
-  max: number;
-  step?: number;
-  value: number;
-  onChange: (value: number) => void;
-};
+  label: string
+  min: number
+  max: number
+  step?: number
+  value: number
+  onChange: (value: number) => void
+}
 
 export function LabeledSlider({
   label,
@@ -18,8 +18,8 @@ export function LabeledSlider({
   value,
   onChange,
 }: Props) {
-  const [id] = useState(nanoid(10));
-  const formattedValue = (step < 1 ? value * 100 : value).toFixed();
+  const [id] = useState(nanoid(10))
+  const formattedValue = (step < 1 ? value * 100 : value).toFixed()
   return (
     <div className="slider-container">
       <label htmlFor={id} className="label">
@@ -37,5 +37,5 @@ export function LabeledSlider({
       />
       <span className="value">({formattedValue})</span>
     </div>
-  );
+  )
 }

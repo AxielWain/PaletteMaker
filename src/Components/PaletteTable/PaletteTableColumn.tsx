@@ -1,15 +1,15 @@
-import { GridHeader } from '../GridHeader';
-import { PaletteGrid } from '../PaletteGrid';
+import { GridHeader } from '../GridHeader'
+import { PaletteGrid } from '../PaletteGrid'
 
 type Props = {
-  colors: readonly string[];
-  lighterColors: readonly string[];
-  darkerColors: readonly string[];
-  columnHeaders: readonly string[];
-  rowHeaders: readonly string[];
-  rowHeadersClass?: string;
-  onClickedColor: (color: string) => void;
-};
+  colors: readonly string[]
+  lighterColors: readonly string[]
+  darkerColors: readonly string[]
+  columnHeaders: readonly string[]
+  rowHeaders: readonly string[]
+  rowHeadersClass?: string
+  onClickedColor: (color: string) => void
+}
 
 export function PaletteTableColumn({
   colors,
@@ -55,5 +55,5 @@ export function PaletteTableColumn({
         </div>
       </div>
     </div>
-  );
+  )
 }

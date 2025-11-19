@@ -1,12 +1,12 @@
-import './styles.css';
+import './styles.css'
 
 type Props = {
-  alignItems: 'center' | 'end';
-  className?: string;
-  columnCount: number;
-  headers: readonly string[];
-  justifyContent: 'center' | 'end';
-};
+  alignItems: 'center' | 'end'
+  className?: string
+  columnCount: number
+  headers: readonly string[]
+  justifyContent: 'center' | 'end'
+}
 
 export function GridHeader({
   alignItems,
@@ -30,5 +30,5 @@ export function GridHeader({
         </strong>
       ))}
     </div>
-  );
+  )
 }

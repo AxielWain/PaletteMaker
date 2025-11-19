@@ -1,18 +1,18 @@
-import { TRANSPARENT_COLOR } from './constants';
+import { TRANSPARENT_COLOR } from './constants'
 
 type ColorArrays = {
-  baseColors: readonly string[];
-  baseLabels: readonly string[];
-  baseShades: { darkerGridColors: string[]; lighterGridColors: string[] };
-  derivedColors: string[];
-  derivedLabels: readonly string[];
-  derivedShades: { darkerGridColors: string[]; lighterGridColors: string[] };
-};
+  baseColors: readonly string[]
+  baseLabels: readonly string[]
+  baseShades: { darkerGridColors: string[]; lighterGridColors: string[] }
+  derivedColors: string[]
+  derivedLabels: readonly string[]
+  derivedShades: { darkerGridColors: string[]; lighterGridColors: string[] }
+}
 
-type ColorDefinition = { [key: string]: string };
+type ColorDefinition = { [key: string]: string }
 
 function buildLabel(label: string, index: number) {
-  return `${label}${index}`;
+  return `${label}${index}`
 }
 
 function addShadesLabels(
@@ -25,11 +25,11 @@ function addShadesLabels(
   offset = 0
 ) {
   for (let i = 0; i < rows; i++) {
-    const index = i * totalColors + colorIndex;
-    const color = shades[index];
+    const index = i * totalColors + colorIndex
+    const color = shades[index]
     if (color !== TRANSPARENT_COLOR) {
-      const label = buildLabel(labels[colorIndex], i + 1 + offset);
-      definition[label] = color;
+      const label = buildLabel(labels[colorIndex], i + 1 + offset)
+      definition[label] = color
     }
   }
 }
@@ -41,11 +41,11 @@ function addLabels(
   darkerShades: string[],
   lighterShades: string[]
 ) {
-  const rows = darkerShades.length / colors.length;
+  const rows = darkerShades.length / colors.length
 
   for (let i = 0; i < colors.length; i++) {
-    definition[labels[i]] = colors[i];
-    addShadesLabels(definition, i, colors.length, lighterShades, labels, rows);
+    definition[labels[i]] = colors[i]
+    addShadesLabels(definition, i, colors.length, lighterShades, labels, rows)
 
     addShadesLabels(
       definition,
@@ -55,12 +55,12 @@ function addLabels(
       labels,
       rows,
       rows
-    );
+    )
   }
 }
 
 export function computeColorDefinition(colorArrays: ColorArrays) {
-  const result: { [key: string]: string } = {};
+  const result: { [key: string]: string } = {}
 
   const {
     baseColors,
@@ -69,7 +69,7 @@ export function computeColorDefinition(colorArrays: ColorArrays) {
     derivedColors,
     derivedLabels,
     derivedShades,
-  } = colorArrays;
+  } = colorArrays
 
   addLabels(
     result,
@@ -77,7 +77,7 @@ export function computeColorDefinition(colorArrays: ColorArrays) {
     baseLabels,
     baseShades.darkerGridColors,
     baseShades.lighterGridColors
-  );
+  )
 
   addLabels(
     result,
@@ -85,7 +85,7 @@ export function computeColorDefinition(colorArrays: ColorArrays) {
     derivedLabels,
     derivedShades.darkerGridColors,
     derivedShades.lighterGridColors
-  );
+  )
 
-  return result;
+  return result
 }

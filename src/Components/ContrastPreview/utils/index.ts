@@ -1,2 +1,2 @@
-export * from './addPaletteShades';
-export * from './getGoodContrastShades';
+export * from './addPaletteShades'
+export * from './getGoodContrastShades'

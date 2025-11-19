@@ -1,4 +1,4 @@
-export const TRANSPARENT_COLOR = 'rgba(0, 0, 0, 0)';
+export const TRANSPARENT_COLOR = 'rgba(0, 0, 0, 0)'
 
 export const initialColors = Object.freeze([
   '#ffffff', //white
@@ -9,7 +9,7 @@ export const initialColors = Object.freeze([
   '#0000ff', //blue
   '#ff00ff', //magenta
   '#000000', //black
-]);
+])
 
 export const baseLabels = Object.freeze([
   'white',
@@ -20,7 +20,7 @@ export const baseLabels = Object.freeze([
   'blue',
   'magenta',
   'black',
-]);
+])
 
 export const derivedLabels = Object.freeze([
   'redyellow',
@@ -29,7 +29,7 @@ export const derivedLabels = Object.freeze([
   'cyanblue',
   'bluemagenta',
   'magentared',
-]);
+])
 
 export const columnBaseHeaders = Object.freeze([
   'w',
@@ -40,7 +40,7 @@ export const columnBaseHeaders = Object.freeze([
   'b',
   'm',
   'k',
-]);
+])
 
 export const columnDerivedHeaders = Object.freeze([
   'ry',
@@ -49,7 +49,7 @@ export const columnDerivedHeaders = Object.freeze([
   'cb',
   'bm',
   'mr',
-]);
+])
 
 export const rowHeaders = Object.freeze([
   '',
@@ -66,4 +66,4 @@ export const rowHeaders = Object.freeze([
   '10',
   '11',
   '12',
-]);
+])

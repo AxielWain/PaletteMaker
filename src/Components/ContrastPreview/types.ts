@@ -1,5 +1,5 @@
 export type Shade = {
-  index: number;
-  parentName: string;
-  color: string;
-};
+  index: number
+  parentName: string
+  color: string
+}

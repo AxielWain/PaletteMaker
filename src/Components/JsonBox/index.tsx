@@ -1,11 +1,11 @@
-import './styles.css';
+import './styles.css'
 
 type Props = {
-  jsonString: string;
-  onChange: (value: string) => void;
-  onCopy: () => void;
-  onLoad: () => void;
-};
+  jsonString: string
+  onChange: (value: string) => void
+  onCopy: () => void
+  onLoad: () => void
+}
 
 export function JsonBox({ jsonString, onChange, onCopy, onLoad }: Props) {
   return (
@@ -20,5 +20,5 @@ export function JsonBox({ jsonString, onChange, onCopy, onLoad }: Props) {
         <button onClick={onLoad}>Load</button>
       </div>
     </div>
-  );
+  )
 }

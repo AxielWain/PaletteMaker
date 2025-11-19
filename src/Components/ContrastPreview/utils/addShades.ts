@@ -1,4 +1,4 @@
-import { Shade } from '../types';
+import { Shade } from '../types'
 
 export const addShades = (
   shades: Shade[],
@@ -14,6 +14,6 @@ export const addShades = (
       index: shadeNameIndex,
       parentName: colorNames[i - startIndex],
       color: colors[colorStartIndex + i],
-    });
+    })
   }
-};
+}

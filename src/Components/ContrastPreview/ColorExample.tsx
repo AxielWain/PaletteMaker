@@ -1,20 +1,20 @@
-import { Shade } from './types';
-import { getShadeName } from './utils/getShadeName';
+import { Shade } from './types'
+import { getShadeName } from './utils/getShadeName'
 
 type Props = {
-  inverse: boolean;
-  isComputed: boolean;
-  shades: Shade[];
-};
+  inverse: boolean
+  isComputed: boolean
+  shades: Shade[]
+}
 
 export function ColorExample({ inverse, isComputed, shades }: Props) {
   if (isComputed) {
     const style = (color: string) =>
-      inverse ? { backgroundColor: color } : { color };
+      inverse ? { backgroundColor: color } : { color }
     return (
       <>
         {shades.map((shade) => {
-          const shadeName = getShadeName(shade);
+          const shadeName = getShadeName(shade)
           return (
             <p
               className="color-example"
@@ -23,11 +23,11 @@ export function ColorExample({ inverse, isComputed, shades }: Props) {
             >
               {shadeName}: {shade.color}
             </p>
-          );
+          )
         })}
       </>
-    );
+    )
   }
 
-  return <></>;
+  return <></>
 }

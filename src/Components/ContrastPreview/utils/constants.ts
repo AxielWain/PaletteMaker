@@ -5,7 +5,7 @@ export const BaseNames = Object.freeze([
   'Cyan',
   'Blue',
   'Magenta',
-]);
+])
 
 export const DerivedNames = Object.freeze([
   'RedYellow',
@@ -14,4 +14,4 @@ export const DerivedNames = Object.freeze([
   'CyanBlue',
   'BlueMagenta',
   'MagentaRed',
-]);
+])
