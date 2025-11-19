@@ -3,19 +3,24 @@ import labPlugin from 'colord/plugins/lab'
 
 extend([labPlugin])
 
-export function computeDerivedColors(
-  colors: readonly string[],
-  startIndex = 1,
-  totalColors = 6
-) {
-  const derivedColors: string[] = []
+const startIndex = 1
+const totalColors = 6
 
-  const labColors = colors.map((color) => colord(color).toLab())
+export function computeDerivedColors(colors: readonly string[]) {
+  const derivedColors: string[] = []
   const limitIndex = startIndex + totalColors
-  for (let i = startIndex; i < limitIndex; i++) {
-    const firstColor = labColors[i]
-    const secondColor =
-      i < limitIndex ? labColors[i + 1] : labColors[startIndex]
+  const labColors = colors
+    .slice(startIndex, limitIndex)
+    .map((color) => colord(color).toLab())
+  const indexes: number[] = []
+  labColors.forEach((_, i) => {
+    indexes.push(i)
+  })
+  indexes.push(0)
+
+  for (let i = 0; i < indexes.length - 1; i++) {
+    const firstColor = labColors[indexes[i]]
+    const secondColor = labColors[indexes[i + 1]]
     const meanColor: LabaColor = {
       l: (firstColor.l + secondColor.l) / 2,
       a: (firstColor.a + secondColor.a) / 2,

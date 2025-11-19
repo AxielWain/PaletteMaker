@@ -19,7 +19,7 @@ import {
 } from './utils/constants'
 
 const emptyShades = getEmptyShadesGrid(initialColors.length)
-const initialDerivedColors = getEmptyShadesGrid(6, 1)
+const initialDerivedColors = computeDerivedColors(initialColors)
 const emptyDerivedShades = getEmptyShadesGrid(initialDerivedColors.length)
 
 const copy = (text: string) => {
@@ -44,7 +44,9 @@ function App() {
   const handleColorChange = (index: number, color: string) => {
     const newColors = [...baseColors]
     newColors.splice(index, 1, color)
+    const inBetween = computeDerivedColors(newColors)
     setBaseColors(newColors)
+    setDerivedColors(inBetween)
     if (isComputed) {
       resetComputedColors()
     }
@@ -83,7 +85,6 @@ function App() {
   }
 
   const resetComputedColors = () => {
-    setDerivedColors([...initialDerivedColors])
     setDarkerShades([...emptyShades])
     setLighterShades([...emptyShades])
     setDerivedDarkerShades([...emptyDerivedShades])
