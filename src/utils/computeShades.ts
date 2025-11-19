@@ -43,8 +43,5 @@ export function computeShades(
     accuLightness -= deltaLightness
   }
 
-  const lighterShades = shades.slice(0, maxShades)
-  const darkerShades = shades.slice(maxShades, shades.length)
-
-  return { darkerShades, lighterShades }
+  return shades
 }

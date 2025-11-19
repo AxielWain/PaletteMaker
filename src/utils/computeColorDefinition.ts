@@ -3,10 +3,10 @@ import { TRANSPARENT_COLOR } from './constants'
 type ColorArrays = {
   baseColors: readonly string[]
   baseLabels: readonly string[]
-  baseShades: { darkerGridColors: string[]; lighterGridColors: string[] }
+  baseShades: string[]
   derivedColors: string[]
   derivedLabels: readonly string[]
-  derivedShades: { darkerGridColors: string[]; lighterGridColors: string[] }
+  derivedShades: string[]
 }
 
 type ColorDefinition = { [key: string]: string }
@@ -38,24 +38,13 @@ function addLabels(
   definition: ColorDefinition,
   colors: readonly string[],
   labels: readonly string[],
-  darkerShades: string[],
-  lighterShades: string[]
+  shades: string[]
 ) {
-  const rows = darkerShades.length / colors.length
+  const rows = shades.length / colors.length
 
   for (let i = 0; i < colors.length; i++) {
     definition[labels[i]] = colors[i]
-    addShadesLabels(definition, i, colors.length, lighterShades, labels, rows)
-
-    addShadesLabels(
-      definition,
-      i,
-      colors.length,
-      darkerShades,
-      labels,
-      rows,
-      rows
-    )
+    addShadesLabels(definition, i, colors.length, shades, labels, rows)
   }
 }
 
@@ -71,21 +60,9 @@ export function computeColorDefinition(colorArrays: ColorArrays) {
     derivedShades,
   } = colorArrays
 
-  addLabels(
-    result,
-    baseColors,
-    baseLabels,
-    baseShades.darkerGridColors,
-    baseShades.lighterGridColors
-  )
+  addLabels(result, baseColors, baseLabels, baseShades)
 
-  addLabels(
-    result,
-    derivedColors,
-    derivedLabels,
-    derivedShades.darkerGridColors,
-    derivedShades.lighterGridColors
-  )
+  addLabels(result, derivedColors, derivedLabels, derivedShades)
 
   return result
 }

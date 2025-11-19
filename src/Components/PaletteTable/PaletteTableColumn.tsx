@@ -3,8 +3,7 @@ import { PaletteGrid } from '../PaletteGrid'
 
 type Props = {
   colors: readonly string[]
-  lighterColors: readonly string[]
-  darkerColors: readonly string[]
+  shades: readonly string[]
   columnHeaders: readonly string[]
   rowHeaders: readonly string[]
   rowHeadersClass?: string
@@ -13,11 +12,10 @@ type Props = {
 
 export function PaletteTableColumn({
   colors,
-  lighterColors,
-  darkerColors,
   columnHeaders,
   rowHeaders,
   rowHeadersClass,
+  shades,
   onClickedColor,
 }: Props) {
   return (
@@ -43,12 +41,7 @@ export function PaletteTableColumn({
             onClick={onClickedColor}
           />
           <PaletteGrid
-            colors={lighterColors}
-            columnCount={colors.length}
-            onClick={onClickedColor}
-          />
-          <PaletteGrid
-            colors={darkerColors}
+            colors={shades}
             columnCount={colors.length}
             onClick={onClickedColor}
           />

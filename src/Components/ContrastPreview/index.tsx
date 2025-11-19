@@ -9,11 +9,9 @@ type Props = {
   background: string
   foreground: string
   baseColors: string[]
-  darkerShades: string[]
-  lighterShades: string[]
+  colorShades: string[]
   derivedColors: string[]
-  derivedDarkerShades: string[]
-  derivedLighterShades: string[]
+  derivedShades: string[]
 }
 
 export function ContrastPreview({
@@ -21,19 +19,16 @@ export function ContrastPreview({
   background,
   foreground,
   baseColors,
-  darkerShades,
-  lighterShades,
   derivedColors,
-  derivedDarkerShades,
-  derivedLighterShades,
+  colorShades,
+  derivedShades,
 }: Props) {
   const [currentShade, setCurrentShade] = useState(0)
 
   const palette: Shade[][] = []
 
   addPaletteShades(palette, baseColors, derivedColors)
-  addPaletteShades(palette, lighterShades, derivedLighterShades, 1, 6)
-  addPaletteShades(palette, darkerShades, derivedDarkerShades, 7, 6)
+  addPaletteShades(palette, colorShades, derivedShades, 1, 12)
 
   const { shadesForBackground, shadesForForeground } = getGoodContrastShades(
     palette[currentShade],
