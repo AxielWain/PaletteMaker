@@ -1,14 +1,21 @@
+import { ControlRestrictions } from '../Components/BaseColorControls/constants'
 import { computeShades } from './computeShades'
 
 export function computeShadesGrid(colors: readonly string[], maxShades = 6) {
   const darkerColors: string[][] = []
   const lighterColors: string[][] = []
 
-  for (const color of colors) {
-    const { darkerShades, lighterShades } = computeShades(color, maxShades)
+  colors.forEach((color, index) => {
+    const { minLightness, maxLightness } = ControlRestrictions[index]
+    const { darkerShades, lighterShades } = computeShades(
+      color,
+      maxShades,
+      maxLightness,
+      minLightness
+    )
     darkerColors.push(darkerShades)
     lighterColors.push(lighterShades)
-  }
+  })
 
   const darkerGridColors: string[] = []
   const lighterGridColors: string[] = []
