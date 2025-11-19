@@ -38,12 +38,12 @@ export function PaletteTableColumn({
         />
         <div className="palette">
           <PaletteGrid
-            colors={lighterColors}
+            colors={colors}
             columnCount={colors.length}
             onClick={onClickedColor}
           />
           <PaletteGrid
-            colors={colors}
+            colors={lighterColors}
             columnCount={colors.length}
             onClick={onClickedColor}
           />
